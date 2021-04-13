@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+{% load index %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<title>Data Analytics - Using Files - Results</title>
+<style>
+
+
+* {
+box-sizing: border-box;
+}
+
+body {
+font-family: "Open Sans", sans-serif;
+background-color: #ffffff;
+color: #111111;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin: 0;
+}
+
+.container {
+border-radius: 5px;
+}
+
+.container h1 {
+text-align: center;
+margin-bottom: 30px;
+}
+
+.container a {
+text-decoration: none;
+color: orange;
+}
+
+.btn {
+cursor: pointer;
+display: inline-block;
+width: 50%;
+background: orange;
+padding: 15px;
+font-family: inherit;
+font-size: 16px;
+border: 0;
+border-radius: 5px;
+}
+
+.btn:focus {
+outline: 0;
+}
+
+.btn:active {
+transform: scale(0.98);
+}
+
+.text {
+margin-top: 30px;
+}
+
+.form-control {
+position: relative;
+margin: 20px 0 40px;
+width: 300px;
+}
+
+.form-control input {
+background-color: transparent;
+border: 0;
+border-bottom: 2px #111111 solid;
+display: block;
+width: 100%;
+padding: 15px 0;
+font-size: 18px;
+color: #111111;
+}
+
+.form-control input:focus,
+.form-control input:valid {
+outline: 0;
+border-bottom-color: orange;
+}
+
+.form-control label {
+position: absolute;
+top: 15px;
+left: 0;
+pointer-events: none;
+}
+
+.form-control label span {
+display: inline-block;
+font-size: 18px;
+min-width: 5px;
+transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus+label span,
+.form-control input:valid+label span {
+color: orange;
+transform: translateY(-30px);
+}
+
+#mytable{
+    border-collapse: collapse;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+</head>
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div>
+        <h1><a href="{% url 'homeview' %}">DataXAnalytics</a></h1>
+      </div>
+    </div>
+  </header>
+<body>
+<main id="main">
+<div class="container">
+<p align="center">Data Analysis using Uploaded Files</p>
+</div>
+    <img src="data:image/png;base64,{{ data }}" alt="Image Not Found">
+<button id="myBtn" class="btn">Table Representation</button>
+<div id="myModal" class="modal">
+<div class="modal-content">
+<span class="close">&times;</span>
+<p align="center">Table Representation of Analysis Result</p>
+<div class="container">
+<table id="mytable" style="width: 100%">
+    <tr>
+        <th>Customer ID</th>
+        <th>Customer Name</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Mobile Number</th>
+        <th>Annual Income</th>
+        <th>Spending Score</th>
+        <th>Cluster</th>
+    </tr>
+    {% for x in iteration %}
+        <tr>
+            <td>{{ temp1|index:x }}</td>
+            <td>{{ temp2|index:x }}</td>
+            <td>{{ temp3|index:x }}</td>
+            <td>{{ temp4|index:x }}</td>
+            <td>{{ temp5|index:x }}</td>
+            <td>{{ temp6|index:x }}</td>
+            <td>{{ temp7|index:x }}</td>
+            <td>{{ temp8|index:x }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</div>
+</div>
+</div>
+</main>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+</body>
+</html>

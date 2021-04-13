@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<title>Data Analytics - Using Files</title>
+<style>
+
+
+* {
+box-sizing: border-box;
+}
+
+body {
+font-family: "Open Sans", sans-serif;
+background-color: #ffffff;
+color: #111111;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin: 0;
+}
+
+.container {
+border-radius: 5px;
+}
+
+.container h1 {
+text-align: center;
+margin-bottom: 30px;
+}
+
+.container a {
+text-decoration: none;
+color: orange;
+}
+
+.btn {
+cursor: pointer;
+display: inline-block;
+width: 100%;
+background: orange;
+padding: 15px;
+font-family: inherit;
+font-size: 16px;
+border: 0;
+border-radius: 5px;
+}
+
+.btn:focus {
+outline: 0;
+}
+
+.btn:active {
+transform: scale(0.98);
+}
+
+.text {
+margin-top: 30px;
+}
+
+.form-control {
+position: relative;
+margin: 20px 0 40px;
+width: 300px;
+}
+
+.form-control input {
+background-color: transparent;
+border: 0;
+border-bottom: 2px #111111 solid;
+display: block;
+width: 100%;
+padding: 15px 0;
+font-size: 18px;
+color: #111111;
+}
+
+.form-control input:focus,
+.form-control input:valid {
+outline: 0;
+border-bottom-color: orange;
+}
+
+.form-control label {
+position: absolute;
+top: 15px;
+left: 0;
+pointer-events: none;
+}
+
+.form-control label span {
+display: inline-block;
+font-size: 18px;
+min-width: 5px;
+transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus+label span,
+.form-control input:valid+label span {
+color: orange;
+transform: translateY(-30px);
+}
+</style>
+</head>
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div>
+        <h1><a href="{% url 'homeview' %}">DataXAnalytics</a></h1>
+      </div>
+    </div>
+  </header>
+<body>
+<main id="main">
+<div class="container">
+<p align="center">Data Analysis using Uploaded Files</p>
+</div>
+<form action="{% url 'filesview' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="form-control">
+<input type="file" name="uploadfiles" required />
+</div>
+<button class="btn">Submit</button>
+</form>
+</main>
+</body>

@@ -1,0 +1,116 @@
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Analytics - Sign Up</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<style>
+
+.container a {
+text-decoration: none;
+color: orange;
+}
+</style>
+<!-- Template Main CSS File -->
+<link href="{% static '/css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div>
+        <h1><a href="{% url 'homeview' %}">DataXAnalytics</a></h1>
+      </div>
+    </div>
+  </header>
+<div class="container">
+<p align="center">Sign Up for an account</p>
+</div>
+<form action="{% url 'signupview' %}" method="POST">
+    {% csrf_token %}
+<div class="form-control">
+<input type="text" name="firstname" required/>
+<label>First Name</label>
+</div>
+<div class="form-control">
+<input type="text" name="lastname" required/>
+<label>Last Name</label>
+</div>
+<div class="form-control">
+<p>Date Of Birth</p>
+<input type="date" name="dob" required/>
+</div>
+<div class="form-control">
+<input type="text" name="email" required/>
+<label>E-Mail</label>
+</div>
+<div class="form-control">
+<input type="text" name="mobileno" required/>
+<label>Mobile Number</label>
+</div>
+<script>
+var check = function() {
+  if (document.getElementById('passwrd_id').value ==
+    document.getElementById('confirmpass_id').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'Matching';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'Not Matching';
+  }
+}
+</script> 
+<div class="form-control">
+<input type="password" name="passwrd" id="passwrd_id" onkeyup="check()" required/>
+<label>Password</label>
+</div>
+<div class="container">
+<input type="checkbox" onclick="Password()">Show Password<br><br>
+</div>
+<div class="form-control">
+<input type="password" name="confirmpass" id="confirmpass_id" onkeyup="check()" required/>
+<label>Confirm Password</label>
+<span id="message"></span>   
+</div>
+<div class="container">
+<input type="checkbox" onclick="ConfirmPassword()">Show Password<br><br>
+</div>
+<button class="btn">Sign Up</button>
+</form>
+<script>
+const labels = document.querySelectorAll(".form-control label");
+
+labels.forEach((label) => {
+label.innerHTML = label.innerText
+.split("")
+.map(
+(letter, idx) =>
+`<span style="transition-delay:${idx * 50}ms">${letter}</span>`
+)
+.join("");
+});
+function Password() 
+{
+  var x = document.getElementById("passwrd_id");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+function ConfirmPassword() 
+{
+  var x = document.getElementById("confirmpass_id");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+</body>
+</html>
