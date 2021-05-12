@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'uzuz2bwlgy0_n7eah#hxncx8eui74zwnwzra$u*f5k5rq=##3y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://dataxanalytics.herokuapp.com/','127.0.0.1']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Django',
     'rest_framework',
+    'herokuapp',
 ]
 
 MIDDLEWARE = [
