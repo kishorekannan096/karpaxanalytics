@@ -27,7 +27,7 @@ SECRET_KEY = 'uzuz2bwlgy0_n7eah#hxncx8eui74zwnwzra$u*f5k5rq=##3y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://dataxanalytics.herokuapp.com/','127.0.0.1']
+ALLOWED_HOSTS = ['https://customersegmentation-sg.herokuapp.com/','127.0.0.1']
 
 
 # Application definition
